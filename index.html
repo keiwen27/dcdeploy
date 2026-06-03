@@ -2,965 +2,907 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeFlow | Visual Development Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>FluxStudio | AI‑Native Visual Development Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f9fbfd;
+            color: #1e293b;
+            background-color: #fefefe;
+            scroll-behavior: smooth;
         }
-        
-        h1, h2, h3, h4 {
+
+        h1, h2, h3, h4, .logo-text, .cta-button, .secondary-button {
             font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            line-height: 1.3;
         }
-        
+
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
-        
-        /* Header & Navigation */
+
         header {
-            background-color: #fff;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            background-color: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04);
             position: fixed;
             width: 100%;
             z-index: 1000;
+            transition: all 0.2s;
         }
-        
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 18px 0;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
+            gap: 10px;
         }
-        
+
         .logo-icon {
             color: #4361ee;
             font-size: 28px;
-            margin-right: 10px;
         }
-        
+
         .logo-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
-            color: #333;
+            letter-spacing: -0.3px;
+            color: #0f172a;
         }
-        
+
         .logo-text span {
             color: #4361ee;
+            background: linear-gradient(135deg, #4361ee, #8b5cf6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
-        
+
         .nav-links {
             display: flex;
             list-style: none;
+            gap: 36px;
         }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
+
         .nav-links a {
             text-decoration: none;
-            color: #555;
+            color: #334155;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.25s;
+            font-size: 1rem;
         }
-        
+
         .nav-links a:hover {
             color: #4361ee;
         }
-        
+
         .cta-button {
-            background-color: #4361ee;
+            background: linear-gradient(105deg, #4361ee 0%, #6c5ce7 100%);
             color: white;
             border: none;
-            padding: 12px 28px;
-            border-radius: 6px;
+            padding: 10px 28px;
+            border-radius: 40px;
             font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(67, 97, 238, 0.2);
         }
-        
+
         .cta-button:hover {
-            background-color: #3a56d4;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.25);
+            background: linear-gradient(105deg, #3a56d4, #5b4bc4);
+        }
+
+        .secondary-button {
+            background-color: white;
+            color: #4361ee;
+            border: 1.5px solid #4361ee;
+            padding: 10px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .secondary-button:hover {
+            background-color: #f1f5ff;
             transform: translateY(-2px);
         }
-        
+
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            font-size: 24px;
-            color: #333;
+            font-size: 28px;
+            color: #1e293b;
             cursor: pointer;
         }
-        
-        /* Hero Section */
+
         .hero {
-            padding: 150px 0 100px;
-            background: linear-gradient(135deg, #f0f4ff 0%, #f9fbfd 100%);
+            padding: 160px 0 100px;
+            background: radial-gradient(circle at 10% 30%, rgba(67, 97, 238, 0.03), rgba(255, 255, 255, 0) 80%);
         }
-        
+
         .hero-content {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 60px;
         }
-        
+
         .hero-text {
             flex: 1;
-            padding-right: 40px;
         }
-        
+
         .hero-text h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: #222;
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            background: linear-gradient(to right, #0f172a, #2d3a6e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
-        
+
         .hero-text h1 span {
-            color: #4361ee;
+            background: linear-gradient(135deg, #4361ee, #a855f7);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
-        
+
         .hero-text p {
             font-size: 18px;
-            color: #666;
-            margin-bottom: 30px;
-            max-width: 600px;
+            color: #475569;
+            margin-bottom: 36px;
+            max-width: 560px;
         }
-        
+
         .hero-buttons {
             display: flex;
-            gap: 15px;
+            gap: 18px;
+            flex-wrap: wrap;
         }
-        
-        .secondary-button {
-            background-color: white;
-            color: #4361ee;
-            border: 2px solid #4361ee;
-            padding: 12px 28px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .secondary-button:hover {
-            background-color: #f0f4ff;
-        }
-        
+
         .hero-image {
             flex: 1;
             text-align: center;
         }
-        
+
         .hero-image img {
             max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(67, 97, 238, 0.15);
+            border-radius: 24px;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
         }
-        
-        /* Features Section */
+
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 64px;
         }
-        
+
         .section-title h2 {
-            font-size: 36px;
-            color: #222;
-            margin-bottom: 15px;
+            font-size: 40px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 16px;
         }
-        
+
         .section-title p {
-            color: #666;
-            max-width: 700px;
+            color: #475569;
+            max-width: 680px;
             margin: 0 auto;
+            font-size: 1.1rem;
         }
-        
+
         .features {
             padding: 100px 0;
-            background-color: white;
+            background-color: #ffffff;
         }
-        
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
         }
-        
+
         .feature-card {
             background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 32px 28px;
+            border-radius: 28px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s;
+            border: 1px solid #f0f2f8;
         }
-        
+
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 24px 40px rgba(67, 97, 238, 0.1);
+            border-color: #e0e7ff;
         }
-        
+
         .feature-icon {
-            background-color: #eef2ff;
-            color: #4361ee;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
+            background: linear-gradient(135deg, #eef2ff, #ffffff);
+            width: 72px;
+            height: 72px;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            font-size: 28px;
+            margin-bottom: 24px;
+            font-size: 32px;
+            color: #4361ee;
         }
-        
+
         .feature-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
+            font-size: 24px;
+            margin-bottom: 14px;
         }
-        
+
         .feature-card p {
-            color: #666;
+            color: #5b6c8f;
         }
-        
-        /* Benefits Section */
+
         .benefits {
             padding: 100px 0;
-            background-color: #f0f4ff;
+            background-color: #fafcff;
         }
-        
+
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            gap: 32px;
         }
-        
+
         .benefit-item {
             text-align: center;
-            padding: 30px 20px;
+            padding: 32px 20px;
+            background: white;
+            border-radius: 32px;
+            transition: all 0.25s;
         }
-        
+
+        .benefit-item:hover {
+            background: white;
+            box-shadow: 0 20px 30px -15px rgba(67, 97, 238, 0.08);
+        }
+
         .benefit-icon {
+            font-size: 48px;
             color: #4361ee;
-            font-size: 40px;
             margin-bottom: 20px;
         }
-        
+
         .benefit-item h3 {
             font-size: 22px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
-        
-        .benefit-item p {
-            color: #666;
-        }
-        
-        /* Testimonials */
+
         .testimonials {
             padding: 100px 0;
-            background-color: white;
+            background: #ffffff;
         }
-        
-        .testimonial-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
+
         .testimonial {
-            background: #f9fbfd;
-            padding: 40px;
-            border-radius: 10px;
+            background: #f9fafc;
+            padding: 48px 52px;
+            border-radius: 48px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 880px;
+            margin: 0 auto;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+            border: 1px solid #edf2f7;
         }
-        
+
         .testimonial-text {
-            font-size: 18px;
-            font-style: italic;
-            margin-bottom: 30px;
-            color: #555;
+            font-size: 1.3rem;
+            font-style: normal;
+            font-weight: 500;
+            color: #1e293b;
+            line-height: 1.45;
+            margin-bottom: 32px;
         }
-        
+
         .testimonial-author {
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 16px;
         }
-        
+
         .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: #ddd;
-            margin-right: 15px;
+            width: 64px;
+            height: 64px;
+            border-radius: 60px;
+            background: linear-gradient(145deg, #4361ee, #b76eff);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            color: #4361ee;
-            font-size: 24px;
+            font-weight: 700;
+            font-size: 26px;
+            color: white;
         }
-        
-        .author-info h4 {
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-        
-        .author-info p {
-            color: #777;
-            font-size: 14px;
-        }
-        
-        /* Pricing Section */
+
         .pricing {
             padding: 100px 0;
-            background-color: #f9fbfd;
+            background-color: #fefeff;
         }
-        
+
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 32px;
         }
-        
+
         .pricing-card {
             background: white;
-            border-radius: 10px;
-            padding: 40px 30px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        
-        .pricing-card.featured {
-            border-top: 5px solid #4361ee;
-            transform: scale(1.05);
+            border-radius: 36px;
+            padding: 40px 32px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            border: 1px solid #eef2ff;
             position: relative;
         }
-        
+
+        .pricing-card.featured {
+            border-top: 6px solid #4361ee;
+            transform: scale(1.02);
+            background: #ffffff;
+            box-shadow: 0 24px 44px rgba(67, 97, 238, 0.12);
+        }
+
         .featured-badge {
             position: absolute;
-            top: -12px;
+            top: -16px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #4361ee;
+            background: #4361ee;
             color: white;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 14px;
+            padding: 6px 22px;
+            border-radius: 40px;
+            font-size: 0.85rem;
             font-weight: 600;
+            white-space: nowrap;
         }
-        
-        .pricing-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .pricing-card.featured:hover {
-            transform: scale(1.05) translateY(-10px);
-        }
-        
+
         .plan-name {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #333;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
         }
-        
+
         .plan-price {
             font-size: 48px;
-            font-weight: 700;
+            font-weight: 800;
             color: #4361ee;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
-        
+
         .plan-price span {
-            font-size: 16px;
-            color: #777;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #64748b;
         }
-        
+
         .plan-features {
             list-style: none;
-            margin-bottom: 30px;
+            margin: 32px 0;
         }
-        
+
         .plan-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            color: #555;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f2f5;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        
-        .plan-features li:last-child {
-            border-bottom: none;
+
+        .plan-features i {
+            color: #4361ee;
+            width: 22px;
         }
-        
-        /* CTA Section */
+
         .cta-section {
             padding: 100px 0;
-            background: linear-gradient(135deg, #4361ee 0%, #3a56d4 100%);
+            background: linear-gradient(125deg, #0f172a 0%, #1e2a5e 100%);
             text-align: center;
-            color: white;
         }
-        
+
         .cta-section h2 {
-            font-size: 36px;
+            font-size: 38px;
+            color: white;
             margin-bottom: 20px;
         }
-        
+
         .cta-section p {
-            font-size: 18px;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
+            color: #cbd5e6;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 32px;
         }
-        
+
         .cta-section .cta-button {
-            background-color: white;
-            color: #4361ee;
-            font-size: 16px;
-            padding: 15px 40px;
+            background: white;
+            color: #1e293b;
+            box-shadow: none;
         }
-        
+
         .cta-section .cta-button:hover {
-            background-color: #f0f4ff;
+            background: #f1f5ff;
+            transform: translateY(-3px);
         }
-        
-        /* Footer */
+
         footer {
-            background-color: #222;
-            color: #ccc;
-            padding: 70px 0 20px;
+            background-color: #0b1120;
+            color: #9ca3af;
+            padding: 70px 0 30px;
         }
-        
+
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 48px;
+            margin-bottom: 54px;
         }
-        
+
         .footer-column h3 {
-            font-size: 20px;
-            color: white;
-            margin-bottom: 25px;
+            color: #f1f5f9;
+            font-size: 1.2rem;
+            margin-bottom: 24px;
         }
-        
+
         .footer-links {
             list-style: none;
         }
-        
+
         .footer-links li {
             margin-bottom: 12px;
         }
-        
+
         .footer-links a {
-            color: #aaa;
+            color: #9aa4bf;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: 0.2s;
         }
-        
+
         .footer-links a:hover {
-            color: #4361ee;
+            color: #6c8eff;
         }
-        
+
         .copyright {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #444;
-            font-size: 14px;
-            color: #888;
+            padding-top: 24px;
+            border-top: 1px solid #1f2a44;
+            font-size: 0.9rem;
         }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
+
+        @media (max-width: 1024px) {
+            .hero-text h1 {
+                font-size: 44px;
+            }
+        }
+
+        @media (max-width: 880px) {
             .hero-content {
                 flex-direction: column;
-            }
-            
-            .hero-text {
-                padding-right: 0;
-                margin-bottom: 50px;
                 text-align: center;
             }
-            
             .hero-text p {
-                margin: 0 auto 30px;
+                margin: 0 auto 32px;
             }
-            
+            .hero-buttons {
+                justify-content: center;
+            }
+            .testimonial {
+                padding: 36px 28px;
+            }
+            .testimonial-text {
+                font-size: 1.1rem;
+            }
             .pricing-card.featured {
-                transform: none;
-            }
-            
-            .pricing-card.featured:hover {
-                transform: translateY(-10px);
+                transform: scale(1);
             }
         }
-        
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-            
             .mobile-menu-btn {
                 display: block;
             }
-            
+            .section-title h2 {
+                font-size: 32px;
+            }
+            .hero {
+                padding: 130px 0 70px;
+            }
             .hero-text h1 {
                 font-size: 36px;
             }
-            
-            .section-title h2 {
-                font-size: 30px;
+            .features-grid, .benefits-grid {
+                gap: 24px;
             }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .hero-buttons button {
-                width: 100%;
-                max-width: 300px;
+            .feature-card {
+                padding: 28px;
             }
         }
-        
-        @media (max-width: 576px) {
-            .hero {
-                padding: 130px 0 80px;
+
+        @media (max-width: 540px) {
+            .container {
+                padding: 0 20px;
             }
-            
-            .features, .benefits, .testimonials, .pricing, .cta-section {
-                padding: 70px 0;
-            }
-            
-            .feature-card, .testimonial {
-                padding: 25px;
-            }
-            
             .plan-price {
-                font-size: 36px;
+                font-size: 38px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
     <header>
         <div class="container">
             <nav>
                 <div class="logo">
-                    <div class="logo-icon"><i class="fas fa-bezier-curve"></i></div>
-                    <div class="logo-text">Code<span>Flow</span></div>
+                    <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="logo-text">Flux<span>Studio</span></div>
                 </div>
-                
                 <ul class="nav-links">
                     <li><a href="#features">Features</a></li>
                     <li><a href="#benefits">Benefits</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">Developers</a></li>
                 </ul>
-                
                 <button class="cta-button">Start Free Trial</button>
-                <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+                <button class="mobile-menu-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Build Apps Faster With <span>Visual Development</span></h1>
-                    <p>CodeFlow empowers teams to create enterprise-grade applications with minimal coding. Drag, drop, and connect components to build powerful web and mobile apps in record time.</p>
+                    <h1>Build Apps Faster with <span>Visual & AI Intelligence</span></h1>
+                    <p>FluxStudio empowers teams to ship enterprise-grade applications 10x faster, combining visual development with AI‑assisted logic — without vendor lock‑in.</p>
                     <div class="hero-buttons">
-                        <button class="cta-button">Start Building Free</button>
-                        <button class="secondary-button">Watch Demo</button>
+                        <button class="cta-button">Start Building</button>
+                        <button class="secondary-button">Watch Demo <i class="fas fa-play-circle" style="margin-left: 6px;"></i></button>
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="CodeFlow Platform Interface">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c2235f32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="FluxStudio dashboard preview">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-title">
-                <h2>Powerful Features for Rapid Development</h2>
-                <p>CodeFlow provides all the tools you need to build, deploy, and scale applications without writing extensive code.</p>
+                <h2>Everything you need to create powerful apps</h2>
+                <p>From prototype to production — modern toolkit for modern teams</p>
             </div>
-            
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-th-large"></i>
-                    </div>
-                    <h3>Visual Builder</h3>
-                    <p>Drag and drop UI components to design responsive interfaces. Connect data sources with simple point-and-click actions.</p>
+                    <div class="feature-icon"><i class="fas fa-cubes"></i></div>
+                    <h3>Smart Component Hub</h3>
+                    <p>300+ responsive, customizable components. Drag, drop, and inject custom code when needed.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Database Integration</h3>
-                    <p>Connect to any data source with built-in connectors. Automatically generate CRUD operations without writing SQL.</p>
+                    <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                    <h3>AI Logic Generator</h3>
+                    <p>Describe your backend logic in plain English — AI builds APIs, data models, and workflows for you.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Cross-Platform</h3>
-                    <p>Build once, deploy everywhere. Generate applications for web, iOS, and Android from a single visual design.</p>
+                    <div class="feature-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <h3>Multi‑Cloud Deploy</h3>
+                    <p>Deploy to AWS, Azure, or your own servers. Automated CI/CD and monitoring included.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Extensible with Code</h3>
-                    <p>Add custom functionality with JavaScript when needed. Our platform doesn't limit your creativity or complexity.</p>
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3>Real‑time Collaboration</h3>
+                    <p>Multiple designers & developers can edit simultaneously with version history and comments.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Enterprise Security</h3>
-                    <p>Built-in authentication, authorization, and data encryption. SOC2 compliant with enterprise-grade security features.</p>
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Enterprise‑grade Security</h3>
+                    <p>GDPR & SOC2 compliant, granular access controls, and end‑to‑end encryption.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>One-Click Deployment</h3>
-                    <p>Deploy to cloud or on-premises with a single click. Automatic scaling and monitoring included.</p>
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Full‑stack Code Export</h3>
+                    <p>Export production‑ready React, Vue, Swift or Kotlin code. No platform lock‑in.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Benefits Section -->
     <section class="benefits" id="benefits">
         <div class="container">
             <div class="section-title">
-                <h2>Why Choose CodeFlow?</h2>
-                <p>Join thousands of companies accelerating their digital transformation with low-code development.</p>
+                <h2>Why forward‑thinking teams choose FluxStudio</h2>
+                <p>Faster development, lower total cost, full flexibility</p>
             </div>
-            
             <div class="benefits-grid">
                 <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>10x Faster Development</h3>
-                    <p>Build applications in days instead of months with visual development tools.</p>
+                    <div class="benefit-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <h3>9x faster delivery</h3>
+                    <p>Cut repetitive coding and focus on unique business value.</p>
                 </div>
-                
                 <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-money-bill-wave"></i>
-                    </div>
-                    <h3>Reduce Costs by 70%</h3>
-                    <p>Lower development and maintenance costs with fewer resources required.</p>
+                    <div class="benefit-icon"><i class="fas fa-chart-simple"></i></div>
+                    <h3>65% lower TCO</h3>
+                    <p>Reduce maintenance overhead and infrastructure costs.</p>
                 </div>
-                
                 <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Citizen Developers</h3>
-                    <p>Enable business users to build solutions with minimal IT assistance.</p>
+                    <div class="benefit-icon"><i class="fas fa-code-branch"></i></div>
+                    <h3>Business‑IT alignment</h3>
+                    <p>Product teams build interactive prototypes, reducing rework by 80%.</p>
                 </div>
-                
                 <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Scale Effortlessly</h3>
-                    <p>From prototype to enterprise-scale applications with the same platform.</p>
+                    <div class="benefit-icon"><i class="fas fa-globe"></i></div>
+                    <h3>No vendor lock‑in</h3>
+                    <p>Full code ownership, hybrid deployment, and platform independence.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>Trusted by Industry Leaders</h2>
-                <p>See what our customers have to say about their experience with CodeFlow.</p>
+                <h2>Trusted by global innovators</h2>
+                <p>Real feedback from teams who transformed their workflow</p>
             </div>
-            
             <div class="testimonial-slider">
-                <div class="testimonial">
-                    <div class="testimonial-text">
-                        "CodeFlow transformed how we deliver solutions to our business units. What used to take 6 months now takes 3 weeks. Our development team can focus on complex problems while business teams build their own solutions."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">SC</div>
-                        <div class="author-info">
-                            <h4>Sarah Chen</h4>
-                            <p>CTO, TechGrowth Inc.</p>
-                        </div>
-                    </div>
+                <div class="testimonial" id="dynamicTestimonial">
+                    <!-- filled by JS -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
     <section class="pricing" id="pricing">
         <div class="container">
             <div class="section-title">
-                <h2>Simple, Transparent Pricing</h2>
-                <p>Choose the plan that fits your needs. All plans include core features with no hidden fees.</p>
+                <h2>Simple, transparent pricing</h2>
+                <p>Choose a plan that scales with your team — upgrade anytime</p>
             </div>
-            
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <h3 class="plan-name">Starter</h3>
-                    <div class="plan-price">$29<span>/month</span></div>
+                    <div class="plan-price">$39<span>/month</span></div>
                     <ul class="plan-features">
-                        <li>Up to 5 users</li>
-                        <li>10 GB storage</li>
-                        <li>Basic components</li>
-                        <li>Community support</li>
-                        <li>1 production app</li>
+                        <li><i class="fas fa-check-circle"></i> Up to 5 members</li>
+                        <li><i class="fas fa-check-circle"></i> 20 GB storage</li>
+                        <li><i class="fas fa-check-circle"></i> Core components + AI assist</li>
+                        <li><i class="fas fa-check-circle"></i> Community support</li>
+                        <li><i class="fas fa-check-circle"></i> 2 production apps</li>
                     </ul>
-                    <button class="secondary-button">Get Started</button>
+                    <button class="secondary-button">Try 14 days free</button>
                 </div>
-                
                 <div class="pricing-card featured">
-                    <div class="featured-badge">Most Popular</div>
+                    <div class="featured-badge">Most popular</div>
                     <h3 class="plan-name">Professional</h3>
-                    <div class="plan-price">$89<span>/month</span></div>
+                    <div class="plan-price">$99<span>/month</span></div>
                     <ul class="plan-features">
-                        <li>Up to 25 users</li>
-                        <li>100 GB storage</li>
-                        <li>All components</li>
-                        <li>Priority support</li>
-                        <li>10 production apps</li>
-                        <li>Custom branding</li>
+                        <li><i class="fas fa-check-circle"></i> Up to 20 members</li>
+                        <li><i class="fas fa-check-circle"></i> 200 GB storage</li>
+                        <li><i class="fas fa-check-circle"></i> Full component library + AI workflows</li>
+                        <li><i class="fas fa-check-circle"></i> Priority support</li>
+                        <li><i class="fas fa-check-circle"></i> Unlimited apps & custom domains</li>
                     </ul>
-                    <button class="cta-button">Try Free for 14 Days</button>
+                    <button class="cta-button">Start 14‑day trial</button>
                 </div>
-                
                 <div class="pricing-card">
                     <h3 class="plan-name">Enterprise</h3>
                     <div class="plan-price">Custom</div>
                     <ul class="plan-features">
-                        <li>Unlimited users</li>
-                        <li>Unlimited storage</li>
-                        <li>All features included</li>
-                        <li>24/7 dedicated support</li>
-                        <li>Unlimited apps</li>
-                        <li>On-premises option</li>
+                        <li><i class="fas fa-check-circle"></i> Unlimited members & storage</li>
+                        <li><i class="fas fa-check-circle"></i> On‑premise / VPC deployment</li>
+                        <li><i class="fas fa-check-circle"></i> 99.99% SLA guarantee</li>
+                        <li><i class="fas fa-check-circle"></i> Dedicated success manager</li>
+                        <li><i class="fas fa-check-circle"></i> Custom security & compliance</li>
                     </ul>
-                    <button class="secondary-button">Contact Sales</button>
+                    <button class="secondary-button">Contact sales</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2>Start Building Today</h2>
-            <p>Join over 10,000 companies that use CodeFlow to accelerate their application development. No credit card required for the free trial.</p>
-            <button class="cta-button">Get Started for Free</button>
+            <h2>Ready to reinvent your development workflow?</h2>
+            <p>Start building with FluxStudio today — no credit card required.</p>
+            <button class="cta-button">Get started for free</button>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <div class="logo">
-                        <div class="logo-icon"><i class="fas fa-bezier-curve"></i></div>
-                        <div class="logo-text">Code<span>Flow</span></div>
+                    <div class="logo" style="margin-bottom: 16px;">
+                        <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="logo-text">Flux<span>Studio</span></div>
                     </div>
-                    <p style="margin-top: 20px; color: #aaa;">The leading visual development platform for building enterprise applications with minimal coding.</p>
+                    <p style="color: #9aa4bf; max-width: 220px;">Build complex applications as intuitively as assembling blocks.</p>
                 </div>
-                
                 <div class="footer-column">
                     <h3>Product</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Use Cases</a></li>
-                        <li><a href="#">Integrations</a></li>
-                        <li><a href="#">Roadmap</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#">Enterprise</a></li>
+                        <li><a href="#">Templates</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-column">
                     <h3>Resources</h3>
                     <ul class="footer-links">
                         <li><a href="#">Documentation</a></li>
-                        <li><a href="#">Tutorials</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Case studies</a></li>
+                        <li><a href="#">API reference</a></li>
                         <li><a href="#">Community</a></li>
-                        <li><a href="#">Support</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-column">
                     <h3>Company</h3>
                     <ul class="footer-links">
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">About us</a></li>
                         <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Press kit</a></li>
+                        <li><a href="#">Privacy & terms</a></li>
                     </ul>
                 </div>
             </div>
-            
             <div class="copyright">
-                <p>&copy; 2023 CodeFlow. All rights reserved.</p>
+                <p>© 2025 FluxStudio — Code with vision. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+        (function() {
+            // Mobile menu toggle
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            
-            // Adjust for mobile
-            if (window.innerWidth <= 768) {
-                if (navLinks.style.display === 'flex') {
-                    navLinks.style.flexDirection = 'column';
-                    navLinks.style.position = 'absolute';
-                    navLinks.style.top = '80px';
-                    navLinks.style.left = '0';
-                    navLinks.style.width = '100%';
-                    navLinks.style.backgroundColor = 'white';
-                    navLinks.style.padding = '20px';
-                    navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
-                    
-                    const navItems = document.querySelectorAll('.nav-links li');
-                    navItems.forEach(item => {
-                        item.style.margin = '10px 0';
-                    });
-                }
+            function closeMobileMenu() {
+                if (navLinks && window.innerWidth <= 768) navLinks.style.display = 'none';
             }
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if(window.innerWidth <= 768) {
-                        document.querySelector('.nav-links').style.display = 'none';
+            if (mobileBtn && navLinks) {
+                mobileBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isVisible = navLinks.style.display === 'flex';
+                    navLinks.style.display = isVisible ? 'none' : 'flex';
+                    if (navLinks.style.display === 'flex') {
+                        navLinks.style.flexDirection = 'column';
+                        navLinks.style.position = 'absolute';
+                        navLinks.style.top = '78px';
+                        navLinks.style.left = '0';
+                        navLinks.style.width = '100%';
+                        navLinks.style.backgroundColor = 'white';
+                        navLinks.style.padding = '28px 24px';
+                        navLinks.style.boxShadow = '0 20px 35px rgba(0,0,0,0.1)';
+                        navLinks.style.gap = '22px';
+                        navLinks.style.zIndex = '999';
+                        const lis = navLinks.querySelectorAll('li');
+                        lis.forEach(li => li.style.margin = '0');
+                    } else {
+                        navLinks.style = '';
                     }
+                });
+            }
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const hash = this.getAttribute('href');
+                    if (hash === '#') return;
+                    const target = document.querySelector(hash);
+                    if (target) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        if (window.innerWidth <= 768 && navLinks) navLinks.style.display = 'none';
+                    }
+                });
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && navLinks) {
+                    navLinks.style = '';
+                    navLinks.style.display = '';
+                } else if (window.innerWidth <= 768 && navLinks && navLinks.style.display !== 'flex') {
+                    navLinks.style.display = 'none';
                 }
             });
-        });
-        
-        // Simple testimonial slider
-        const testimonials = [
-            {
-                text: "CodeFlow transformed how we deliver solutions to our business units. What used to take 6 months now takes 3 weeks. Our development team can focus on complex problems while business teams build their own solutions.",
-                name: "Sarah Chen",
-                position: "CTO, TechGrowth Inc.",
-                initials: "SC"
-            },
-            {
-                text: "We reduced our app development time by 80% using CodeFlow. The visual interface made it easy for our analysts to build data dashboards without waiting for IT resources.",
-                name: "Marcus Johnson",
-                position: "Director of Operations, DataCorp",
-                initials: "MJ"
-            },
-            {
-                text: "As a non-technical founder, CodeFlow allowed me to build our MVP in just 2 months. I could test ideas quickly and iterate based on user feedback without deep coding knowledge.",
-                name: "Lisa Wang",
-                position: "Founder, StartupLabs",
-                initials: "LW"
-            }
-        ];
-        
-        let currentTestimonial = 0;
-        const testimonialElement = document.querySelector('.testimonial');
-        
-        function rotateTestimonial() {
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            updateTestimonial();
-        }
-        
-        function updateTestimonial() {
-            const testimonial = testimonials[currentTestimonial];
-            testimonialElement.innerHTML = `
-                <div class="testimonial-text">"${testimonial.text}"</div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">${testimonial.initials}</div>
-                    <div class="author-info">
-                        <h4>${testimonial.name}</h4>
-                        <p>${testimonial.position}</p>
+            if (window.innerWidth <= 768 && navLinks) navLinks.style.display = 'none';
+
+            // Testimonials data (English)
+            const testimonialsList = [
+                {
+                    text: "FluxStudio completely changed how we deliver internal tools. A CRM upgrade that used to take 3 months shipped as MVP in just 2 weeks. Business teams can now adjust logic themselves.",
+                    name: "Minru Lin",
+                    position: "Director of Digital Transformation · LianTec",
+                    initials: "ML"
+                },
+                {
+                    text: "With AI‑generated backend logic, our product managers build functional prototypes while engineers focus on core optimization. Collaboration has never been smoother — iteration speed increased 200%.",
+                    name: "Wei Chen",
+                    position: "CTO, Visionary Future",
+                    initials: "WC"
+                },
+                {
+                    text: "As a startup, FluxStudio's visual full‑stack capabilities let us validate ideas fast and cheap. Investors signed the term sheet the same day they saw our demo.",
+                    name: "Yizhou Jiang",
+                    position: "Co‑founder, StarLink Tech",
+                    initials: "YJ"
+                }
+            ];
+            let currentIdx = 0;
+            const testimonialContainer = document.getElementById('dynamicTestimonial');
+            function updateTestimonial() {
+                if (!testimonialContainer) return;
+                const t = testimonialsList[currentIdx];
+                testimonialContainer.innerHTML = `
+                    <div class="testimonial-text">“${t.text}”</div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">${t.initials}</div>
+                        <div class="author-info">
+                            <h4>${t.name}</h4>
+                            <p>${t.position}</p>
+                        </div>
                     </div>
-                </div>
-            `;
-        }
-        
-        // Auto-rotate testimonials every 5 seconds
-        setInterval(rotateTestimonial, 5000);
-        
-        // CTA button interactions
-        document.querySelectorAll('.cta-button').forEach(button => {
-            button.addEventListener('click', function() {
-                alert('Thank you for your interest in CodeFlow! You would be redirected to the signup page in a real implementation.');
+                `;
+            }
+            if (testimonialContainer) {
+                updateTestimonial();
+                setInterval(() => {
+                    currentIdx = (currentIdx + 1) % testimonialsList.length;
+                    updateTestimonial();
+                }, 5500);
+            }
+
+            // CTA button alerts (demo)
+            const allActionButtons = document.querySelectorAll('.cta-button, .secondary-button, .pricing-card button');
+            allActionButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    if (btn.closest('.pricing-card') || btn.classList.contains('cta-button') || btn.classList.contains('secondary-button')) {
+                        e.preventDefault();
+                        let plan = '';
+                        if (btn.closest('.pricing-card')) {
+                            const planElem = btn.closest('.pricing-card')?.querySelector('.plan-name');
+                            plan = planElem ? planElem.innerText : 'plan';
+                            alert(`✨ Thank you for choosing the ${plan} plan! In a live environment you would proceed to checkout.`);
+                        } else {
+                            alert('🚀 Thanks for exploring FluxStudio — you would be redirected to the signup or demo page.');
+                        }
+                    }
+                });
             });
-        });
-        
-        // Pricing card interactions
-        document.querySelectorAll('.pricing-card button').forEach(button => {
-            button.addEventListener('click', function() {
-                const planName = this.closest('.pricing-card').querySelector('.plan-name').textContent;
-                alert(`You selected the ${planName} plan. In a real implementation, you would be redirected to the checkout process.`);
-            });
-        });
+        })();
     </script>
 </body>
 </html>
